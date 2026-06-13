@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Message For Ash </title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===================== PARTICLE CANVAS ===================== -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ===================== PROGRESS BAR ===================== -->
+  <div id="progress-bar-container" aria-label="Journey progress">
+    <div id="progress-bar"></div>
+    <div id="progress-steps">
+      <span class="step" data-step="0">💌</span>
+      <span class="step" data-step="1">💜</span>
+      <span class="step" data-step="2">🤖</span>
+      <span class="step" data-step="3">📝</span>
+      <span class="step" data-step="4">✨</span>
+    </div>
+  </div>
+
+  <!-- ===================== SECTION 1: LOADING ===================== -->
+  <section id="loading-screen" class="screen active" aria-live="polite">
+    <div class="loading-content">
+      <div class="loading-icon">✉️</div>
+      <h2 class="loading-title">Something special is loading...</h2>
+      <p class="loading-sub">Prepared with lots of Love.. ❤️</p>
+      <div id="countdown" aria-label="Countdown">5</div>
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 2: WELCOME ===================== -->
+  <section id="welcome-screen" class="screen" aria-label="Welcome">
+    <div class="welcome-content glass-card">
+      <h1 class="welcome-title">A Message for Ash <span class="heart-glow">❤️</span></h1>
+      <p class="welcome-subtitle">These are things I should have said sooner.<br/>This is my attempt.</p>
+      <p class="handwritten-line" id="handwritten-text"></p>
+      <button class="glow-btn primary-btn" id="start-btn" aria-label="Read my heart">
+        Read My Heart 🌹
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 3: HEART CARDS ===================== -->
+  <section id="cards-screen" class="screen" aria-label="Heart messages">
+    <div class="cards-wrapper">
+      <h2 class="section-title">Things I need you to know but never said</h2>
+      <p class="section-subtitle">These are thoughts I've carried for a long time.</p>
+
+      <div class="cards-container" id="cards-container">
+
+        <div class="msg-card glass-card accent-pink" data-index="0">
+          <div class="card-inner">
+            <div class="card-num">01</div>
+            <div class="text-group">
+              <p class="card-text">"I'm sorry for the moments I hurt you."</p>
+              <p class="card-subtext">I hate myself for it more than you know. You never deserved it.</p>
+            </div>
+            <div class="card-deco">🌸</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-blue" data-index="1">
+          <div class="card-inner">
+            <div class="card-num">02</div>
+            <div class="text-group">
+              <p class="card-text">"You deserve better from me."</p>
+              <p class="card-subtext">Better patience, better love. I wasn't always who you needed, and I'm sorry...</p>
+            </div>
+            <div class="card-deco">💙</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-pink" data-index="2">
+          <div class="card-inner">
+            <div class="card-num">03</div>
+            <div class="text-group">
+              <p class="card-text">"You make my ordinary days feel special."</p>
+              <p class="card-subtext">Every second spent with you is a memory I always cherish.</p>
+            </div>
+            <div class="card-deco">🌷</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-blue" data-index="3">
+          <div class="card-inner">
+            <div class="card-num">04</div>
+            <div class="text-group">
+              <p class="card-text">"Even after every fight, my heart still chooses you."</p>
+              <p class="card-subtext">That part of me has never been in question. Not once.</p>
+            </div>
+            <div class="card-deco">📸</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-pink" data-index="4">
+          <div class="card-inner">
+            <div class="card-num">05</div>
+            <div class="text-group">
+              <p class="card-text">"I miss you every single day."</p>
+              <p class="card-subtext">From the talks to the time we spent, every meal to every small thing we gave each other.</p>
+            </div>
+            <div class="card-deco">🌹</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-blue" data-index="5">
+          <div class="card-inner">
+            <div class="card-num">06</div>
+            <div class="text-group">
+              <p class="card-text">"You matter to me more than I say."</p>
+              <p class="card-subtext">That hasn't changed. It never will.</p>
+            </div>
+            <div class="card-deco">💜</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-pink" data-index="6">
+          <div class="card-inner">
+            <div class="card-num">07</div>
+            <div class="text-group">
+              <p class="card-text">"I'm sorry for the pain I caused you."</p>
+              <p class="card-subtext">Not just sorry — I promise to never hurt you. You deserve softness always.</p>
+            </div>
+            <div class="card-deco">⭐</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-blue" data-index="7">
+          <div class="card-inner">
+            <div class="card-num">08</div>
+            <div class="text-group">
+              <p class="card-text">"If I could choose again, I would still choose you in every universe."</p>
+              <p class="card-subtext">Every single one. I would never hesitate. Always You.</p>
+            </div>
+            <div class="card-deco">❤️</div>
+          </div>
+        </div>
+
+        <div class="msg-card glass-card accent-pink" data-index="8">
+          <div class="card-inner">
+            <div class="card-num">09</div>
+            <div class="text-group">
+              <p class="card-text">"Please don't let this be our ending."</p>
+              <p class="card-subtext">We are worth more than this silence. You know we are.</p>
+            </div>
+            <div class="card-deco">🌸</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Typing reveal after last card -->
+      <div id="cards-outro" class="cards-outro hidden">
+        <div class="outro-box">
+          <div class="outro-header">
+            <span class="outro-header-text">One Last Thing From Me 💌</span>
+          </div>
+          <div class="outro-body">
+            <p id="cards-outro-text" class="outro-typing"></p>
+          </div>
+        </div>
+        <div class="outro-btn-wrap">
+          <button class="glow-btn primary-btn" id="cards-continue-btn">One More Thing ❤️</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 4: FORGIVENESS METER ===================== -->
+  <section id="ai-screen" class="screen" aria-label="Forgiveness Meter">
+    <div class="ai-wrapper glass-card">
+      <div class="ai-icon">🔬</div>
+      <span class="ai-science-badge">✦ Completely Scientific ✦</span>
+      <h2 class="ai-title">Forgiveness Meter</h2>
+      <p class="ai-sub">Calculating how much forgiveness I deserve...</p>
+
+      <div class="meter-container">
+        <div class="meter-track">
+          <div id="meter-fill" class="meter-fill"></div>
+        </div>
+        <div id="meter-percent" class="meter-percent">0%</div>
+      </div>
+
+      <div class="meter-labels">
+        <span>None 😬</span>
+        <span>Maybe 🤔</span>
+        <span>Yes! 💙</span>
+      </div>
+
+      <!-- Glitch / Error state -->
+      <div id="meter-error" class="meter-error hidden">
+
+        <!-- Spinning struggling emoji (idea 3) -->
+        <div class="meter-struggling" id="meter-struggling">
+          <span class="struggle-emoji">⚙️</span>
+          <p class="struggle-text">Processing... please wait...</p>
+        </div>
+
+        <!-- Error lines appear after struggle -->
+        <div class="error-lines hidden" id="error-lines">
+          <span class="glitch-text">ERROR...</span>
+          <span class="glitch-text">ERROR...</span>
+          <span class="glitch-text">ERROR...</span>
+        </div>
+
+        <div class="broken-meter hidden" id="broken-meter">💔 ⚙️ 🔧</div>
+
+        <!-- Idea 1: better break reason -->
+        <div class="error-reason-block hidden" id="error-reason-block">
+          <p class="error-msg">Forgiveness score unavailable.</p>
+          <p class="error-reason">"System failure: subject detected as dangerously cute.<br/>Cannot compute forgiveness when the person is this precious." 🥺</p>
+        </div>
+
+        <!-- Idea 2: diagnostic cards -->
+        <div class="diag-cards hidden" id="diag-cards">
+          <p class="diag-title">📋 Diagnostic Report</p>
+          <div class="diag-card diag-pink">
+            <span class="diag-icon">💙</span>
+            <div class="diag-info">
+              <span class="diag-label">Cuteness Levels</span>
+              <span class="diag-value">OFF THE CHARTS 📈</span>
+            </div>
+            <span class="diag-status status-red">CRITICAL</span>
+          </div>
+          <div class="diag-card diag-blue">
+            <span class="diag-icon">🌸</span>
+            <div class="diag-info">
+              <span class="diag-label">Love Detected</span>
+              <span class="diag-value">IMMEASURABLE ∞</span>
+            </div>
+            <span class="diag-status status-blue">OVERFLOW</span>
+          </div>
+          <div class="diag-card diag-pink">
+            <span class="diag-icon">🥺</span>
+            <div class="diag-info">
+              <span class="diag-label">Heart Capacity</span>
+              <span class="diag-value">SYSTEM CANNOT HANDLE</span>
+            </div>
+            <span class="diag-status status-red">FATAL</span>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="glow-btn primary-btn hidden" id="ai-continue-btn">I Love You ❤️</button>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 5: LETTER ===================== -->
+  <section id="letter-screen" class="screen" aria-label="Letter from my heart">
+    <div class="letter-wrapper">
+      <div class="letter-card glass-card">
+        <div class="letter-header">
+          <span class="letter-stamp">💌</span>
+          <h2 class="letter-heading">A Letter From My Heart</h2>
+        </div>
+        <div class="letter-body">
+          <p class="letter-salutation">Ash,</p>
+          <p>I know apologies don't magically fix everything.</p>
+          <p>But I hope you can feel how sincere this is.</p>
+          <p>You mean more to me than I sometimes know how to express.</p>
+          <p>Thank you for your patience.</p>
+          <p>Thank you for your kindness.</p>
+          <p>Thank you for being you.</p>
+          <p>No matter what happens, you will always hold a very special place in my heart.</p>
+          <p>And if I could do one thing better, it would be making sure you never doubt how much you mean to me.</p>
+          <p class="letter-close">With all my heart 💙</p>
+        </div>
+      </div>
+
+      <!-- BRIBE OFFER CARD -->
+      <div class="bribe-card glass-card">
+        <div class="bribe-header">
+          <span class="bribe-emoji">🍫</span>
+          <div>
+            <p class="bribe-title">Official Bribe Offer</p>
+            <p class="bribe-sub">*Legally binding. Terms apply. Please read carefully.*</p>
+          </div>
+          <span class="bribe-emoji">🍫</span>
+        </div>
+
+        <p class="bribe-intro">Okay fine. I'm pulling out the big guns. 😤</p>
+
+        <div class="bribe-list">
+          <div class="bribe-item">
+            <span class="bribe-food">🍫</span>
+            <div class="bribe-desc">
+              <span class="bribe-name">Chocolates</span>
+              <span class="bribe-amount">LOTS of them. Like embarrassingly many. 😭</span>
+            </div>
+          </div>
+          <div class="bribe-item">
+            <span class="bribe-food">🍦</span>
+            <div class="bribe-desc">
+              <span class="bribe-name">Ice Cream</span>
+              <span class="bribe-amount">Every. Single. Flavour. No limits.</span>
+            </div>
+          </div>
+          <div class="bribe-item">
+            <span class="bribe-food">🥣</span>
+            <div class="bribe-desc">
+              <span class="bribe-name">Chow Chow Bath</span>
+              <span class="bribe-amount">Your fav. I will order it myself. Right now. 🏃</span>
+            </div>
+          </div>
+          <div class="bribe-item">
+            <span class="bribe-food">🍮</span>
+            <div class="bribe-desc">
+              <span class="bribe-name">Gulab Jamun</span>
+              <span class="bribe-amount">As many as you want. I will not complain once.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="bribe-fine-print">⚠️ Terms & Conditions: You must forgive me first.<br/>This offer expires never, because I'll keep bribing you forever. 😇</p>
+      </div>
+
+      <button class="glow-btn primary-btn" id="forgive-btn">Accept Bribe & Forgive Me 🥺</button>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 6: FINAL SCREEN ===================== -->
+  <section id="final-screen" class="screen" aria-label="Final message">
+    <div class="final-content">
+      <h1 class="final-title">You're My Favorite Person <span class="heart-glow">❤️</span></h1>
+
+      <div class="final-lines" id="final-lines">
+        <p class="final-line hidden" data-delay="0">Yesterday.</p>
+        <p class="final-line hidden" data-delay="600">Today.</p>
+        <p class="final-line hidden" data-delay="1200">Tomorrow.</p>
+        <p class="final-line hidden" data-delay="1800">Always.</p>
+      </div>
+
+      <button class="glow-btn final-btn hidden" id="always-btn">Always Yours ❤️</button>
+
+      <div class="final-message hidden" id="final-message">
+        <div class="final-msg-card glass-card">
+          <p class="final-dear">Ash,</p>
+          <p>Thank you for reading all of this.</p>
+          <p>Whether you forgive me today, tomorrow, or sometime later, I want you to know something:</p>
+          <p class="final-highlight">You are loved.</p>
+          <p class="final-highlight">You are appreciated.</p>
+          <p class="final-highlight">You are important.</p>
+          <p>And you'll always be one of the best things that ever happened to me.</p>
+          <p class="final-heart">❤️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
