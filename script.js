@@ -60,6 +60,16 @@ function setProgress(section) {
 
 // ── Screen transition ─────────────────────────────────────
 function goTo(targetId) {
+  const sectionNames = {
+    'welcome-screen':  'welcome',
+    'cards-screen':    'cards',
+    'ai-screen':       'forgiveness_meter',
+    'letter-screen':   'letter',
+    'final-screen':    'final',
+  };
+  if (sectionNames[targetId]) {
+    trackEvent('section_reached', { section: sectionNames[targetId], message: `Ash reached: ${sectionNames[targetId]}` });
+  }
   const current = document.querySelector('.screen.active');
   if (current) {
     current.classList.add('exit');
@@ -112,6 +122,7 @@ function runWelcome() {
 }
 
 startBtn.addEventListener('click', () => {
+  trackEvent('button_clicked', { button: 'read_my_heart', section: 'welcome', message: 'Ash clicked Read My Heart' });
   state.currentSection = 2;
   setProgress(2);
   goTo('cards-screen');
@@ -161,6 +172,7 @@ function showCardsOutro() {
 }
 
 cardsContinue.addEventListener('click', () => {
+  trackEvent('button_clicked', { button: 'one_more_thing', section: 'cards', message: 'Ash read all cards and continued' });
   state.currentSection = 3;
   setProgress(3);
   goTo('ai-screen');
@@ -258,6 +270,7 @@ function showMeterGlitch() {
 }
 
 aiContinueBtn.addEventListener('click', () => {
+  trackEvent('button_clicked', { button: 'i_love_you', section: 'forgiveness_meter', message: 'Ash saw the forgiveness meter and continued' });
   state.currentSection = 4;
   setProgress(4);
   goTo('letter-screen');
@@ -267,6 +280,7 @@ aiContinueBtn.addEventListener('click', () => {
 // SECTION 5 — LETTER
 // ══════════════════════════════════════════════════════════
 forgiveBtn.addEventListener('click', () => {
+  trackEvent('button_clicked', { button: 'accept_bribe_forgive', section: 'letter', message: 'Ash read the letter and accepted the bribe' });
   state.currentSection = 5;
   setProgress(5);
   goTo('final-screen');
@@ -304,6 +318,7 @@ function runFinalScreen() {
 }
 
 alwaysBtn.addEventListener('click', () => {
+  trackEvent('message_read_completely', { button: 'always_yours', section: 'final', message: '💌 Ash read the entire message completely' });
   launchConfetti();
   burstHearts();
   setTimeout(() => {
@@ -497,4 +512,8 @@ window.addEventListener('resize', () => {
 resizeParticleCanvas();
 resizeConfettiCanvas();
 animateParticles();
+
+// ── GA: Site opened
+trackEvent('site_opened', { section: 'loading', message: 'Ash opened the website' });
+
 runLoading();
