@@ -123,7 +123,7 @@ function runWelcome() {
 
 startBtn.addEventListener('click', () => {
   trackEvent('button_clicked', { button: 'read_my_heart', section: 'welcome', message: 'Ash clicked Read My Heart' });
-  sendNotif('🌹 She clicked Read My Heart', 'Ash is now reading your heart cards...', 'default');
+  sendNotif('She clicked Read My Heart', 'Ash is now reading your heart cards...', 'default');
   state.currentSection = 2;
   setProgress(2);
   goTo('cards-screen');
@@ -174,7 +174,7 @@ function showCardsOutro() {
 
 cardsContinue.addEventListener('click', () => {
   trackEvent('button_clicked', { button: 'one_more_thing', section: 'cards', message: 'Ash read all cards and continued' });
-  sendNotif('📜 She read all 9 cards!', 'Ash finished the heart cards and is continuing...', 'default');
+  sendNotif('She read all 9 cards!', 'Ash finished the heart cards and is continuing...', 'default');
   state.currentSection = 3;
   setProgress(3);
   goTo('ai-screen');
@@ -273,7 +273,7 @@ function showMeterGlitch() {
 
 aiContinueBtn.addEventListener('click', () => {
   trackEvent('button_clicked', { button: 'i_love_you', section: 'forgiveness_meter', message: 'Ash saw the forgiveness meter and continued' });
-  sendNotif('🔬 She saw the Forgiveness Meter!', 'Ash is now reading your letter...', 'default');
+  sendNotif('She saw the Forgiveness Meter!', 'Ash is now reading your letter...', 'default');
   state.currentSection = 4;
   setProgress(4);
   goTo('letter-screen');
@@ -284,7 +284,7 @@ aiContinueBtn.addEventListener('click', () => {
 // ══════════════════════════════════════════════════════════
 forgiveBtn.addEventListener('click', () => {
   trackEvent('button_clicked', { button: 'accept_bribe_forgive', section: 'letter', message: 'Ash read the letter and accepted the bribe' });
-  sendNotif('🍫 She accepted the bribe!', 'Ash read your letter and is heading to the final screen...', 'default');
+  sendNotif('She accepted the bribe!', 'Ash read your letter and is heading to the final screen...', 'default');
   state.currentSection = 5;
   setProgress(5);
   goTo('final-screen');
@@ -323,7 +323,7 @@ function runFinalScreen() {
 
 alwaysBtn.addEventListener('click', () => {
   trackEvent('message_read_completely', { button: 'always_yours', section: 'final', message: '💌 Ash read the entire message completely' });
-  sendNotif('💌 She read everything!', 'Ash clicked Always Yours ❤️ — your entire message was read completely. Now wait for her reply 🥺', 'urgent');
+  sendNotif('She read everything!', 'Ash clicked Always Yours - your entire message was read completely. Now wait for her reply :)', 'urgent');
   launchConfetti();
   burstHearts();
   setTimeout(() => {
@@ -522,7 +522,7 @@ animateParticles();
 const NTFY_TOPIC = 'apology-for-lovely-babu';
 
 function sendNotif(title, message, priority) {
-  fetch('https://ntfy.sh/' + NTFY_TOPIC, {
+  fetch('https://ntfy.sh/apology-for-lovely-babu', {
     method: 'POST',
     headers: {
       'Title':    title,
@@ -536,7 +536,7 @@ function sendNotif(title, message, priority) {
 // ── GA + ntfy: Site opened
 setTimeout(function() {
   trackEvent('site_opened', { section: 'loading', message: 'Ash opened the website' });
-  sendNotif('💌 She opened it!', 'Ash just opened your message. She is reading it right now...', 'high');
+  sendNotif('She opened it!', 'Ash just opened your message. She is reading it right now...', 'high');
 }, 3000);
 
 runLoading();
