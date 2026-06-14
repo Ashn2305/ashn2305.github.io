@@ -17,9 +17,9 @@
     gtag('js', new Date());
     gtag('config', 'G-N4JGMT0ECW');
 
-    // Helper to fire events easily
+    // Helper to fire events safely
     window.trackEvent = function(event_name, params) {
-      gtag('event', event_name, params || {});
+      try { gtag('event', event_name, params || {}); } catch(e) {}
     };
   </script>
 </head>

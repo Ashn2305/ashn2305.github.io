@@ -534,7 +534,9 @@ function sendNotif(title, message, priority) {
 }
 
 // ── GA + ntfy: Site opened
-trackEvent('site_opened', { section: 'loading', message: 'Ash opened the website' });
-sendNotif('💌 She opened it!', 'Ash just opened your message. She is reading it right now...', 'high');
+setTimeout(function() {
+  trackEvent('site_opened', { section: 'loading', message: 'Ash opened the website' });
+  sendNotif('💌 She opened it!', 'Ash just opened your message. She is reading it right now...', 'high');
+}, 1500);
 
 runLoading();
